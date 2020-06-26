@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>一点搜书</title>
+    <link rel="stylesheet" th:href="@{/CSS/search.css}" type="text/css">
+    <script th:src="@{/JS/jquery-3.4.1.js}"></script>
+    <script th:src="@{/JS/jquery-3.4.1.min.js}"></script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="pin-nav-wrap" id="pin-nav">
+            <div class="box-center cf">
+                <div class="nav-list site-nav fl">
+                    <ul>
+                        <li class="site">
+                            <a class="pin-logo" th:href="@{/index}">
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="">玄幻</a>
+                        </li>
+                        <li class="">
+                            <a href="">都市</a>
+                        </li>
+                        <li class="">
+                            <a href="">仙侠</a>
+                        </li>
+                        <li class="">
+                            <a href="">科幻</a>
+                        </li>
+                        <li class="">
+                            <a href="">游戏</a>
+                        </li>
+                        <li>
+                            <a href="">历史</a>
+                        </li>
+                        <li>
+                            <a href="">奇幻</a>
+                        </li>
+                        <li class="more" id="top-nav-more">
+                            <a href="">
+                                更多
+                                <span></span>
+                            </a>
+                            <div class="dropdown">
+                                <a href="">全部作品</a>
+                                <a href="">轻小说</a>
+                                <a href="">武侠</a>
+                                <a href="">军事</a>
+                                <a href="">悬疑</a>
+                                <a href="">体育</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="result-wrap box-center cf">
+            <div class="main-content-wrap fl">
+                <div class="tool-bar cf">
+                    <div class="count-info fr">
+                        <p>
+                            共<span>8526</span>本相关作品
+                        </p>
+                    </div>
+                    <div class="select-info fl">
+                        <a class="act" href="">相关性</a>
+                        <a href="">更新时间</a>
+                        <a href="">总收藏</a>
+                        <a href="">总字数</a>
+                    </div>
+                </div>
+                <div class="result-list" th:each="novel:${novels}">
+                    <div class="book-img-text">
+                        <ul>
+                            <li class="res-book-item">
+                                <div class="book-img-box">
+                                    <a th:href="@{/info/}+${novel.nid}" target="_blank">
+                                        <img th:src="@{/}+${novel.img}" alt="">
+                                    </a>
+                                </div>
+                                <div class="book-mid-info">
+                                    <h4>
+                                        <a th:href="@{/info/}+${novel.nid}" target="_blank">
+                                            <cite>[[${novel.novel}]]</cite>
+                                        </a>
+                                    </h4>
+                                    <p class="author">
+                                        <a class="name" href="">[[${novel.writer}]]</a>
+                                        <em>|</em>
+                                        <a href="">[[${novel.cname}]]</a>
+                                        <em>|</em>
+                                        <span>连载</span>
+                                    </p>
+                                    <p class="intro">
+                                       [[${novel.synopsis}]]
+                                    </p>
+                                    <p class="update">
+                                        <a href="">最近更新  [[${novel.chapter}]]</a>
+                                        <em>·</em>
+                                        <span>3小时前</span>
+                                    </p>
+                                </div>
+                                <div class="book-right-info">
+                                    <p class="btn">
+                                        <a class="red-btn" th:href="@{/info/}+${novel.nid}" target="_blank">书籍详情</a>
+                                        <a class="green-btn" href="">加入书架</a>
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

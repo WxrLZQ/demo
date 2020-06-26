@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>一点阅读</title>
+    <link rel="stylesheet" th:href="@{/CSS/index.css}" type="text/css">
+    <script th:src="@{/JS/jquery-3.4.1.js}"></script>
+    <script th:src="@{/JS/jquery-3.4.1.min.js}"></script>
+    <script th:src="@{/JS/carousel.js}"></script>
+</head>
+<body>
+<div class="wrap">
+
+    <div class="head box-center">
+
+        <div class="box-center cf">
+            <div class="book-shelf fr">
+                <a th:href="@{/index}" target="_blank">
+                    <i>我的书架</i>
+                </a>
+            </div>
+            <div class="login-box fr"  th:if="${session.name}==null">
+                <div class="sign-out">
+                    <a id="login-btn" class="black" th:href="@{/tologin}" target="_blank">登录</a>
+                    <em>|</em>
+                    <a id="reg-btn" th:href="@{/toregist}" target="_blank">注册</a>
+                </div>
+            </div>
+            <div  class="login-box fr" th:if=" ${session.name}!=null" >
+                <div class="sign-out" th:text="${session.name.username}"></div>
+                <a th:href="@{/cancel}">注销</a>
+            </div>
+            <div class="logo fl">
+                <a th:href="@{/index}"></a>
+            </div>
+            <form th:action="@{/search}" target="_blank">
+                <div class="search-wrap fl">
+                    <input class="search-box" type="text" placeholder="我修的可能是假仙" autocomplete="off" name="novel">
+                    <input class="search-btn" type="submit">
+                </div>
+            </form>
+
+        </div>
+
+        <div class="clear"></div>
+
+    </div>
+
+    <div class="main-nav-wrap">
+        <div class="main-nav box-center cf">
+            <ul>
+                <li class="first">
+                        <span>
+                            <em>
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                            </em>
+                            作品分类
+                        </span>
+                </li>
+                <li class="nav-li">
+                    <a>全部作品</a>
+                </li>
+                <li class="nav-li">
+                    <a>排行</a>
+                </li>
+                <li class="nav-li">
+                    <a>完本</a>
+                </li>
+                <li class="nav-li">
+                    <a>免费</a>
+                </li>
+                <li class="nav-li">
+                    <a>作家专区</a>
+                </li>
+                <li class="nav-li">
+                    <a>客户端</a>
+                </li>
+                <li class="game phone" id="game-phone">
+                    <b class="phone-game">手游</b>
+                </li>
+                <li class="game web" id="game-web">
+                    <b class="web-game">页游</b>
+                </li>
+            </ul>
+        </div>
+
+        <div class="clear"></div>
+    </div>
+
+    <div class="focus-wrap box-center mb40">
+        <div class="classify-list fl" id="classify-list">
+            <dl class="cf">
+                <dd class="left">
+                    <a target="_blank">
+                        <cite>
+                            <em class="icon-1 icon-1-ft"></em>
+                            <span class="info">
+                                    <i>玄幻</i>
+                                    <b>721722</b>
+                                </span>
+                        </cite>
+                    </a>
+                </dd>
+                <dd>
+                    <a target="_blank">
+                        <cite>
+                            <em class="icon-2 icon-2-ft"></em>
+                            <span class="info">
+                                    <i>奇幻</i>
+                                    <b>159241</b>
+                                </span>
+                        </cite>
+                    </a>
+                </dd>
+                <dd class="even left">
+                    <a target="_blank">
+                        <cite>
+                            <em class="icon-3 icon-3-ft"></em>
+                            <span class="info">
+                                    <i>武侠</i>
+                                    <b>45378</b>
+                                </span>
+                        </cite>
+                    </a>
+                </dd>
+                <dd class="even">
+                    <a target="_blank">
+                        <cite>
+                            <em class="icon-4 icon-4-ft"></em>
+                            <span class="info">
+                                    <i>仙侠</i>
+                                    <b>236460</b>
+                                </span>
+                        </cite>
+                    </a>
+                </dd>
+                <dd class="left">
+                    <a target="_blank">
+                        <cite>
+                            <em class="icon-5 icon-5-ft"></em>
+                            <span class="info">
+                                    <i>都市</i>
+                                    <b>374226</b>
+                                </span>
+                        </cite>
+                    </a>
+                </dd>
+                <dd>
+                    <a target="_blank">
+                        <cite>
+                            <em class="icon-6 icon-6-ft"></em>
+                            <span class="info">
+                                    <i>现实</i>
+                                    <b>43569</b>
+                                </span>
+                        </cite>
+                    </a>
+                </dd>
+                <dd class="even left">
+                    <a target="_blank">
+                        <cite>
+                            <em class="icon-7 icon-7-ft"></em>
+                            <span class="info">
+                                    <i>军事</i>
+                                    <b>20678</b>
+                                </span>
+                        </cite>
+                    </a>
+                </dd>
+                <dd class="even">
+                    <a target="_blank">
+                        <cite>
+                            <em class="icon-8 icon-8-ft"></em>
+                            <span class="info">
+                                    <i>历史</i>
+                                    <b>77223</b>
+                                </span>
+                        </cite>
+                    </a>
+                </dd>
+                <dd class="left">
+                    <a target="_blank">
+                        <cite>
+                            <em class="icon-9 icon-9-ft"></em>
+                            <span class="info">
+                                    <i>游戏</i>
+                                    <b>108235</b>
+                                </span>
+                        </cite>
+                    </a>
+                </dd>
+                <dd>
+                    <a target="_blank">
+                        <cite>
+                            <em class="icon-10 icon-10-ft"></em>
+                            <span class="info">
+                                    <i>体育</i>
+                                    <b>9101</b>
+                                </span>
+                        </cite>
+                    </a>
+                </dd>
+                <dd class="even left">
+                    <a target="_blank">
+                        <cite>
+                            <em class="icon-11 icon-11-ft"></em>
+                            <span class="info">
+                                    <i>科幻</i>
+                                    <b>157222</b>
+                                </span>
+                        </cite>
+                    </a>
+                </dd>
+                <dd class="even">
+                    <a target="_blank">
+                        <cite>
+                            <em class="icon-12 icon-12-ft"></em>
+                            <span class="info">
+                                    <i>悬疑</i>
+                                    <b>66999</b>
+                                </span>
+                        </cite>
+                    </a>
+                </dd>
+                <dd class="left">
+                    <a target="_blank">
+                        <cite>
+                            <em class="icon-13 icon-13-ft"></em>
+                            <span class="info">
+                                    <i>女生网</i>
+                                    <b>800308</b>
+                                </span>
+                        </cite>
+                    </a>
+                </dd>
+                <dd>
+                    <a target="_blank">
+                        <cite>
+                            <em class="icon-14 icon-14-ft"></em>
+                            <span class="info">
+                                    <i>轻小说</i>
+                                    <b>113480</b>
+                                </span>
+                        </cite>
+                    </a>
+                </dd>
+            </dl>
+        </div>
+
+        <div class="focus-box fl">
+            <div class="focus-slider">
+                <div class="lbf-sliders">
+                    <a class="more" target="_blank">
+                        <i>
+                            <em></em>
+                            <em></em>
+                            <em></em>
+                        </i>
+                    </a>
+                    <ul>
+                        <li id="item1">
+                            <a>
+                                <img src="images/img-1.jpeg" alt="" width="100%">
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="thumb lbf-button-group" id="thumb">
+                        <a class="lbf-button active">
+                            <span></span>
+                            守正创新
+                        </a>
+                        <a class="lbf-button">
+                            超时空评测
+                        </a>
+                        <a class="lbf-button">
+                            骑砍风云录
+                        </a>
+                        <a class="lbf-button">
+                            我为天帝召唤群雄
+                        </a>
+                        <a class="lbf-button game-link" target="_blank">
+                            神道之绝世仙
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="focus-img cf">
+                <ul>
+                    <li>
+                        <span class="op-tag"></span>
+                        <a>
+                            <img src="images/img-6.png" alt="">
+                        </a>
+                    </li>
+                    <li class="middle">
+                        <span class="op-tag"></span>
+                        <a>
+                            <img src="images/img-7.png" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <span class="op-tag"></span>
+                        <a>
+                            <img src="images/img-8.png" alt="">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="notice-wrap fr">
+            <div class="notice" id="notice">
+                <a class="more" id="more-notice">
+                    <em class="dib-wrap point">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </em>
+                    <i></i>
+                </a>
+                <h3>
+                    <a>同舟共济，文学力量</a>
+                </h3>
+                <div class="notice-list">
+                    <ul>
+                        <li class="color-type-0">
+                            <a>
+                                <i>「</i>资讯<i>」</i>“一帝四皇”征文大赛
+                            </a>
+                        </li>
+                        <li class="color-type-0">
+                            <a>
+                                <i>「</i>资讯<i>」</i>百名网络作家接力发声
+                            </a>
+                        </li>
+                        <li class="color-type-0">
+                            <a>
+                                <i>「</i>资讯<i>」</i>致敬守护我们的职业
+                            </a>
+                        </li>
+                        <li class="color-type-0">
+                            <a>
+                                <i>「</i>资讯<i>」</i>我们的力量征文大赛
+                            </a>
+                        </li>
+                        <li class="color-type-0">
+                            <a class="red">
+                                <em>页游</em>屠神灭魔传说
+                            </a>
+                        </li>
+                        <li class="color-type-0">
+                            <a class="red">
+                                <em>页游</em>神道之绝世仙王
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="attention">
+                    <em class="iconfont"></em>
+                    <marquee behavior="scroll" direction="left" scrollamount="4" loop="0" onmouseover="this.stop()" onmouseout="this.start()">
+                        <span>
+                            一只柠檬精打赏 <a>青空洗雨</a>100W点
+                        </span>
+                    </marquee>
+                </div>
+            </div>
+
+            <div class="notice-banner" id="tr-banner">
+                <div class="op-tag"></div>
+                <a><img src="images/img-9.jpg" alt=""></a>
+            </div>
+
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <div class="index-two-wrap box-center mb40 cf">
+        <div class="hot-work-box fl">
+            <div class="wrap-title cf swiper-title">
+                <div class="title fl">热门作品</div>
+                <div class="more fr">
+                    <a class="more-link">更多</a>
+                </div>
+            </div>
+            <div class="hot-work-info">
+                <div class="hot-work-slide">
+                    <div class="three-slide-wrap">
+                        <ul id="left-slide" class="roundabout roundabout-holder" style="display: block; padding: 0px; position: relative">
+                            <li class="book-1 rboundabout-moveable-item rboundabout-in-focus">
+                                <img class="lazy" src="images/90.jpg" alt="" style="display: inline;">
+                            </li>
+                            <li class="book-1 rboundabout-moveable-item rboundabout-in-focus">
+                                <img class="lazy" src="images/91.jpg" alt="" style="display: inline;">
+                            </li>
+                            <li class="book-1 rboundabout-moveable-item rboundabout-in-focus">
+                                <img class="lazy" src="images/92.jpg" alt="" style="display: inline;">
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="info-text">
+                        <dl>
+                            <dd class="hidden" style="display: block">
+                                <h3>
+                                    <a>我真的不想当医生了</a>
+                                </h3>
+                                <p class="author">
+                                    <a>笔尖的手术刀</a>
+                                    <em></em>
+                                </p>
+                                <p class="total">
+                                    <b>795,731</b>
+                                    <span>人气</span>
+                                </p>
+                                <p class="intro">急诊科医生景萧然连续工作48小时，然后猝死了……重生的他回到少年时代。</p>
+                                <a class="read-btn">书籍详情</a>
+                            </dd>
+                            <dd class="hidden" style="display: none">
+                                <h3>
+                                    <a>诸天谍影</a>
+                                </h3>
+                                <p class="author">
+                                    <a>兴霸天</a>
+                                    <em></em>
+                                </p>
+                                <p class="total">
+                                    <b>8,795,731</b>
+                                    <span>人气</span>
+                                </p>
+                                <p class="intro">三年之后又三年，我快成轮回者老大了喂！</p>
+                                <a class="read-btn">书籍详情</a>
+                            </dd>
+                            <dd class="hidden" style="display: none">
+                                <h3>
+                                    <a>沧元图</a>
+                                </h3>
+                                <p class="author">
+                                    <a>我吃西红柿</a>
+                                    <em></em>
+                                </p>
+                                <p class="total">
+                                    <b>53,795,731</b>
+                                    <span>人气</span>
+                                </p>
+                                <p class="intro">我叫孟川，今年十五岁，是东宁府“镜湖道院”的大师兄。</p>
+                                <a class="read-btn">书籍详情</a>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="center-book-list fl">
+            <div class="list-book">
+                <div class="center-title cf">
+                    <div class="title fl">品书试读</div>
+                </div>
+                <div class="center-showbook cf"    >
+                    <div class="center-book" th:each="novel:${novels}">
+                        <div class="book-img img-box fl">
+                            <a th:href="@{/info/}+${novel.nid}" target="_blank"><img th:src="${novel.img}" alt=""></a>
+                        </div>
+                        <div class="book-info fr">
+                            <div class="book-name" title="">
+                                <a th:href="@{/info/}+${novel.nid}" target="_blank">[[${novel.novel}]]</a>
+                            </div>
+                            <p class="info">[[${novel.synopsis}]]</p>
+                            <div class="author" title="">
+                                <a>[[${novel.writer}]]</a>
+                            </div>
+                            <a class="cate" title="">[[${novel.cname}]]</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="new-book-list fr">
+            <div class="new-book">
+                <div class="new-book-title cf">
+                    <div class="title fl">新书榜</div>
+                    <div class="more fr">
+                        <a class="more-link">更多</a>
+                    </div>
+                </div>
+                <div class="h10-blank"></div>
+                <div class="lists">
+                    <ul>
+                        <li th:each="sort,sortStat:${sort5}">
+                            <span>[[${sort.list}]]</span>
+                            <em class="list-icon" th:classappend="${sort.css}" >[[${sortStat.count}]]</em>
+                            <a th:href="@{/info/}+${sort.nid}" target="_blank">[[${sort.novel}]]</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+    </div>
+
+    <div class="banner-wrap box-center mb40" id="banner-one">
+        <a style="display: inline">
+            <img src="images/banner-1.jpg" alt="">
+            <span class="op-tag"></span>
+        </a>
+        <a></a>
+    </div>
+
+    <div class="rank-wrap box-center mb40 cf">
+        <div class="rank-list">
+            <div class="tab-lists">
+                <div class="wrap-title cf">
+                    <div class="title fl">24小时热销榜</div>
+                    <div class="more fr">
+                        <a class="more-link">更多</a>
+                    </div>
+                </div>
+                <div class="h10-blank"></div>
+                <div class="line"></div>
+                <div class="lists" th:each="sort,sortStat:${sort1}">
+                    <div class="list-box">
+                        <div class="list-a" style="display: block">
+                            <em  class="top1 list-icon" th:text="${sortStat.count}" ></em>
+                            <a class="title" th:href="@{/info/}+${sort.nid}" target="_blank">[[${sort.novel}]]</a>
+                            <a class="author">[[${sort.writer}]]</a>
+                            <a class="cate">[[${sort.cname}]]</a>
+                            <span class="count">[[${sort.list}]]</span>
+                            <div class="list-img img-box">
+                                <a th:href="@{/info/}+${sort.nid}" target="_blank"><img th:src="${sort.img}" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="rank-list">
+            <div class="tab-lists">
+                <div class="wrap-title cf">
+                    <div class="title fl">月票榜 · 新书</div>
+                    <div class="more fr">
+                        <a class="more-link">更多</a>
+                    </div>
+                </div>
+                <div class="h10-blank"></div>
+                <div class="line"></div>
+                <div class="lists" th:each="sort,sortStat:${sort2}">
+                    <div class="list-box" >
+                        <div class="list-a" style="display: block">
+                            <em class="top1 list-icon">[[${sortStat.count}]]</em>
+                            <a class="title" th:href="@{/info/}+${sort.nid}" target="_blank">[[${sort.novel}]]</a>
+                            <a class="author">[[${sort.writer}]]</a>
+                            <a class="cate">[[${sort.cname}]]</a>
+                            <span class="count">[[${sort.list}]]</span>
+                            <div class="list-img img-box">
+                                <a th:href="@{/info/}+${sort.nid}" target="_blank"><img th:src="${sort.img}" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="rank-list">
+            <div class="tab-lists">
+                <div class="wrap-title cf">
+                    <div class="title fl">收藏榜</div>
+                    <div class="more fr">
+                        <a class="more-link">更多</a>
+                    </div>
+                </div>
+                <div class="h10-blank"></div>
+                <div class="line"></div>
+                <div class="lists" th:each="sort,sortStat:${sort3}">
+                    <div class="list-box">
+                        <div class="list-a" style="display: block">
+                            <em class="top1 list-icon">[[${sortStat.count}]]</em>
+                            <a class="title" th:href="@{/info/}+${sort.nid}" target="_blank">[[${sort.novel}]]</a>
+                            <a class="author">[[${sort.writer}]]</a>
+                            <a class="cate">[[${sort.cname}]]</a>
+                            <span class="count">[[${sort.list}]]</span>
+                            <div class="list-img img-box">
+                                <a th:href="@{/info/}+${sort.nid}" target="_blank"><img th:src="${sort.img}" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="rank-list">
+            <div class="tab-lists">
+                <div class="wrap-title cf">
+                    <div class="title fl">周推荐榜</div>
+                    <div class="more fr">
+                        <a class="more-link">更多</a>
+                    </div>
+                </div>
+                <div class="h10-blank"></div>
+                <div class="line"></div>
+                <div class="lists" th:each="sort,sortStat:${sort4}">
+                    <div class="list-box">
+                        <div class="list-a" style="display: block">
+                            <em class="top1 list-icon">[[${sortStat.count}]]</em>
+                            <a class="title" th:href="@{/info/}+${sort.nid}" target="_blank">[[${sort.novel}]]</a>
+                            <a class="author">[[${sort.writer}]]</a>
+                            <a class="cate">[[${sort.cname}]]</a>
+                            <span class="count">[[${sort.list}]]</span>
+                            <div class="list-img img-box">
+                                <a th:href="@{/info/}+${sort.nid}" target="_blank"><img th:src="${sort.img}" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+
+    </div>
+
+    <div class="banner-wrap box-center mb40" id="banner-two">
+        <a style="display: inline">
+            <img src="images/banner-2.jpg" alt="">
+        </a>
+    </div>
+
+    <div class="update-wrap box-center mb40 cf">
+        <div class="update-rec-wrap fl">
+            <h3 class="wrap-title">
+                最近更新
+                <span>24小时内更新13963本</span>
+            </h3>
+            <div class="update-rec-list">
+                <ul>
+                    <li>
+                        <div class="book-wrap cf">
+                            <div class="book-info fr">
+                                <h4 class="">
+                                    <a>随身带个狩猎空间</a>
+                                </h4>
+                                <p class="digital">
+                                    <span>日更千字</span>
+                                </p>
+                                <p class="author">
+                                    <a class="writer">青空洗雨</a>
+                                </p>
+                            </div>
+                            <div class="book-cover">
+                                <a class="link">
+                                    <img src="images/book-cover-1.jpg" alt="">
+                                </a>
+                                <span></span>
+                            </div>
+                        </div>
+                        <p class="intro">在空间中击杀猎物之后获得的小光团竟然能用来修炼？这不是要让我成为万年打野么？</p>
+                    </li>
+                    <li>
+                        <div class="book-wrap cf">
+                            <div class="book-info fr">
+                                <h4 class="">
+                                    <a>垂钓之神</a>
+                                </h4>
+                                <p class="digital">
+                                    <span>日更千字</span>
+                                </p>
+                                <p class="author">
+                                    <a class="writer">会狼叫的猪</a>
+                                </p>
+                            </div>
+                            <div class="book-cover">
+                                <a class="link">
+                                    <img src="images/book-cover-2.jpg" alt="">
+                                </a>
+                                <span></span>
+                            </div>
+                        </div>
+                        <p class="intro">这里流传着一句古话，如果你不是在垂钓，就是在去垂钓的路上。</p>
+                    </li>
+                    <li>
+                        <div class="book-wrap cf">
+                            <div class="book-info fr">
+                                <h4 class="">
+                                    <a>元尊</a>
+                                </h4>
+                                <p class="digital">
+                                    <span>日更千字</span>
+                                </p>
+                                <p class="author">
+                                    <a class="writer">天蚕土豆</a>
+                                </p>
+                            </div>
+                            <div class="book-cover">
+                                <a class="link">
+                                    <img src="images/book-cover-3.jpg" alt="">
+                                </a>
+                                <span></span>
+                            </div>
+                        </div>
+                        <p class="intro">吾有一口玄黄气，可吞天地日月星。</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="update-list-wrap fl">
+            <div class="update-tab cf"></div>
+            <div class="update-list" id="update-list">
+                <div class="update-table">
+                    <table width="100%">
+                        <tbody th:each="book:${book}">
+                            <tr>
+                                <td>
+                                    <a class="classify">
+                                        <em>「</em>[[${book.cname}]]<em>」</em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a class="name" th:href="@{/info/}+${book.nid}" target="_blank">[[${book.novel}]]</a>
+                                </td>
+                                <td>
+                                    <a class="section">[[${book.chapter}]]</a>
+                                </td>
+                                <td class="respon">
+                                    <a class="author">[[${book.writer}]]</a>
+                                </td>
+                                <td class="respon">
+                                    <i>03-12 22:29</i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="god-wrap fr">
+            <h3 class="wrap-title">
+                <a class="more-link">更多</a>
+            </h3>
+            <div class="update-rec-list">
+                <ul>
+                    <li>
+                        <div class="book-wrap cf">
+                            <div class="book-info fr">
+                                <h4 class="">
+                                    <a>斗罗大陆Ⅳ终极斗罗</a>
+                                </h4>
+                                <p class="digital">
+                                    <span>日更千字</span>
+                                </p>
+                                <p class="author">
+                                    <a class="writer">唐家三少</a>
+                                </p>
+                            </div>
+                            <div class="book-cover">
+                                <a class="link">
+                                    <img src="images/info-img-12.jpg" alt="">
+                                </a>
+                                <span></span>
+                            </div>
+                        </div>
+                        <p class="intro">斗罗联邦科考队在极北之地科考时发现了一个有着金银双色花纹的蛋，用仪器探察之后，发现里面居然有生命体征，赶忙将其带回研究所进行孵化。</p>
+                    </li>
+                    <li>
+                        <div class="book-wrap cf">
+                            <div class="book-info fr">
+                                <h4 class="">
+                                    <a>大数据修仙</a>
+                                </h4>
+                                <p class="digital">
+                                    <span>日更千字</span>
+                                </p>
+                                <p class="author">
+                                    <a class="writer">陈风笑</a>
+                                </p>
+                            </div>
+                            <div class="book-cover">
+                                <a class="link">
+                                    <img src="images/info-img-18.jpg" alt="">
+                                </a>
+                                <span></span>
+                            </div>
+                        </div>
+                        <p class="intro">化身数据进入app中能做什么？能做的太多了，尽情想像吧……</p>
+                    </li>
+                    <li>
+                        <div class="book-wrap cf">
+                            <div class="book-info fr">
+                                <h4 class="">
+                                    <a>超神机械师</a>
+                                </h4>
+                                <p class="digital">
+                                    <span>日更千字</span>
+                                </p>
+                                <p class="author">
+                                    <a class="writer">齐佩甲</a>
+                                </p>
+                            </div>
+                            <div class="book-cover">
+                                <a class="link">
+                                    <img src="images/info-img-27.jpg" alt="">
+                                </a>
+                                <span></span>
+                            </div>
+                        </div>
+                        <p class="intro">一人，即是军团！</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+    </div>
+
+    <script>
+
+        var imgs=[
+            {"src":"images/img-1.jpeg"},
+            {"src":"images/img-2.jpg"},
+            {"src":"images/img-3.jpg"},
+            {"src":"images/img-4.jpg"},
+            {"src":"images/img-5.jpg"}
+        ];
+
+        //第一张图片对应的菜单选中
+        $($(".lbf-button")[0]).css("background-color","#ed4259");
+
+        //初始化所有的菜单项
+        var menus=$(".lbf-button");
+        for(var i=0;i<menus.length;i++){
+            menus[i].id=i;
+        }
+
+        //定时器
+        var timeId=setInterval("converImg(imgs)",1500);
+        var index=0;
+        //图片地址切换
+        function converImg(data) {
+
+            //获取图片的标签元素对象
+            var img=$(".lbf-sliders>ul>li>a>img");
+
+            //切换图片地址
+            img.attr({
+                 "src":data[index].src
+            });
+
+            var menus=$(".lbf-button");
+            $(menus[index]).css("background-color","#ed4259");
+
+            for(var i=0;i<data.length;i++){
+                if(i!=index){
+                    $(menus[i]).css("background-color","");
+                }
+             }
+
+            if(index>=data.length-1){
+                index=0;
+            }else{
+                index++;
+            }
+        }
+
+        //给菜单项绑定事件
+         var menuList=$(".lbf-button");
+
+        for(var i=0;i<menuList.length;i++){
+            //鼠标移入事件
+            $(menuList[i]).mouseover(function () {
+                //取消定时器
+                clearInterval(timeId);
+
+                // 图片的选中以及菜单项的选中
+                index=this.id;
+                converImg(imgs);
+            });
+
+            //鼠标移出事件
+            $(menuList[i]).mouseout(function () {
+                //重新启动定时器
+                timeId=setInterval("converImg(imgs)",1500);
+            });
+        }
+
+    </script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            $("div.three-slide-wrap").each(function (i, e) {
+                $(e).attr("ondragstart", "return false");
+            });
+
+            var $index = $("div.three-slide-wrap");
+
+
+            var carousel1 = new Carousel($index.children("ul#left-slide"), {
+                opacity: .9,
+                scale: [.9],
+                transition: "600ms",
+                isClickCard: true,
+                isAuto: true,
+                interval: 1500
+            });
+
+
+        })
+
+        var i = 0;
+        $(".hidden").eq(0).show().siblings().hide();
+        setInterval(function() {
+            i++;
+            if (i == 3) {
+                i = 0;
+            }
+            $(".hidden").eq(i).show().siblings().hide();
+
+        }, 1500);
+
+
+    </script>
+</div>
+</body>
+</html>

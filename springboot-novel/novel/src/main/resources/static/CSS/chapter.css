@@ -1,0 +1,120 @@
+a, blockquote, body, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input, li, ol, p, pre, td, textarea, th, ul {
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: url("../images/big-ba.jpg") fixed;
+}
+li, ul{
+    list-style: none outside none;
+}
+a{
+    text-decoration: none;
+    color: #262626;
+}
+cite, em, i{
+    font-style: normal;
+}
+.wrap a:hover{
+    text-decoration: underline;
+}
+.cf:before, .cf:after{
+    display: table;
+    content: '';
+}
+.cf:after{
+    clear: both;
+}
+.cf{
+    zoom: 1;
+}
+.fl{
+    float: left;
+}
+.fr {
+    float: right;
+}
+.category-nav{
+    position: relative;
+    z-index: 1;
+    width: 800px;
+    height: 22px;
+    margin: 22px auto 21px;
+}
+.category-nav a{
+    font: 12px/22px PingFangSC-Regular, '-apple-system', Simsun;
+    color: #1a1a1a;
+}
+.category-nav em{
+    margin: 4px 0 0 5px;
+}
+.read-container{
+    position: relative;
+    z-index: 20;
+    width: 1200px;
+    margin: 0 auto;
+}
+.read-wrap{
+    font-size: 18px;
+    font-family: PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+    width: 800px;
+    margin: 0 auto;
+}
+.read-container .text-wrap{
+    min-height: 600px;
+    margin-bottom: 20px;
+    border: 1px solid #d8d8d8;
+    background: url("../images/background.png") repeat;
+}
+.read-container .main-text-wrap{
+    padding: 60px 64px;
+}
+.read-container .text-head{
+    position: relative;
+    z-index: 5;
+    margin-bottom: 10px;
+}
+.read-container .main-text-wrap .text-head h3{
+    font: 24px/32px PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+    overflow: hidden;
+    height: 32px;
+    margin-bottom: 10px;
+}
+.read-container .main-text-wrap .text-info{
+    font: 12px/16px PingFangSC-Regular, '-apple-system', Simsun;
+    height: 32px;
+}
+.read-container .main-text-wrap .text-info .info a, .read-container .main-text-wrap .text-info .info i{
+    font-family: PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+    margin-right: 16px;
+    color: #999;
+}
+.read-container .read-content{
+    margin-bottom: 60px;
+}
+.read-container .read-content p{
+    line-height: 35px;
+    overflow: hidden;
+    margin: 12px 0;
+}
+.chapter-control{
+    height: 60px;
+    margin-bottom: 20px;
+    text-align: center;
+    border: 1px solid #d8d8d8;
+    background: url("../images/background.png") repeat;
+}
+.chapter-control a{
+    font: 18px/60px PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif, Simsun;
+    width: 32.2%;
+}
+.chapter-control a, .chapter-control span{
+    display: inline-block;
+    vertical-align: middle;
+    letter-spacing: normal;
+    word-spacing: normal;
+}
+.chapter-control span{
+    height: 32px;
+    border-right: 1px solid #d8d8d8;
+}

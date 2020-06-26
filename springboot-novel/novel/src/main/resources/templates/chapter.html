@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>[[${book.bname}]]_[[${book.chapterNumber}]]</title>
+    <link rel="stylesheet" th:href="@{/CSS/chapter.css}" type="text/css">
+</head>
+<body>
+<div class="wrap">
+    <div class="category-nav">
+        <a th:href="@{/index}">
+            首页
+        </a>
+        <em><img th:src="@{/images/more.png}" alt=""></em>
+        <a href="">
+            [[${book.bname}]]
+        </a>
+        <em><img th:src="@{/images/more.png}" alt=""></em>
+        <a href="">
+            [[${book.novel}]]
+        </a>
+    </div>
+
+    <div class="read-container">
+        <div class="read-wrap">
+            <div class="chapter-box">
+                <div class="text-wrap">
+                    <div class="main-text-wrap">
+                        <div class="text-head">
+                            <h3 class="chapterName">
+                                    <span>
+                                        [[${book.chapterNumber}]]
+                                    </span>
+                            </h3>
+                            <div class="text-info cf">
+                                <div class="info fl">
+                                    <a href="">[[${book.novel}]]</a>
+                                    <a href="">[[${book.writer}]]</a>
+                                    <i>
+                                        <span>3971</span>
+                                    </i>
+                                    <i>
+                                        <span>2019.04.05 17:50</span>
+                                    </i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="read-content" th:utext="${book.content}">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="chapter-control">
+                <a th:href="@{/last(id=${book.id},nid=${book.nid})}">上一章</a>
+                <span></span>
+                <a th:href="@{/info/}+${book.nid}">目录</a>
+                <span></span>
+                <a th:href="@{/next(id=${book.id},nid=${book.nid})}">下一章</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

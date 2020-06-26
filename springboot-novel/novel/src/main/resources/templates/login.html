@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>账号登录丨一点阅读</title>
+    <link rel="stylesheet" th:href="@{/CSS/login.css}" type="text/css">
+</head>
+<body>
+    <div class="wrap">
+        <div class="header">
+            <div class="box-center">
+                <div class="logo cf">
+                    <a href=""></a>
+                </div>
+            </div>
+        </div>
+        <form th:action="@{/login}">
+            <div class="box-center">
+                <div class="login-area-wrap cf">
+                    <div class="login-img fl">
+                        <img src="images/loginBg.jpg" alt="">
+                    </div>
+                    <div class="login-wrap fl">
+                        <div class="login-tab cf">
+                            <span>账号登录</span>
+                        </div>
+                        <div class="login-box">
+                            <p>
+                                <label for="" class="icon-username fl"></label>
+                                <input type="text" placeholder="请输入账号" class="login-text box" name="uid">
+                            </p>
+                            <p>
+                                <label for="" class="icon-password fl"></label>
+                                <input type="password" autocomplete="off" placeholder="请输入密码" class="login-text box" name="password">
+                            </p>
+                            <input type="submit" class="btn-submit btn-red" value="登录">
+                        </div>
+                        <div class="error" th:text="${error}"></div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</body>
+</html>

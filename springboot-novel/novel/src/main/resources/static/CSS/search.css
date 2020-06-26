@@ -1,0 +1,403 @@
+a, blockquote, body, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input, li, ol, p, pre, td, textarea, th, ul {
+    margin: 0;
+    padding: 0;
+}
+li, ul{
+    list-style: none outside none;
+}
+a{
+    text-decoration: none;
+    color: #262626;
+}
+cite, em, i{
+    font-style: normal;
+}
+.wrap a:hover{
+    color: #f00;
+}
+.cf:before, .cf:after{
+    display: table;
+    content: '';
+}
+.cf:after{
+    clear: both;
+}
+.pin-nav-wrap{
+    position: relative;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 42px;
+    transform: translateZ(10px);
+    background: #3e3d43;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 6px rgba(0,0,0,.4);
+}
+.cf{
+    zoom: 1;
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.box-center{
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.pin-nav-wrap .nav-list{
+    height: 42px;
+    margin-left: -10px;
+}
+.pin-nav-wrap .nav-list a:hover{
+    background: #000;
+    border-top: 1px solid #f00;
+}
+.pin-nav-wrap .nav-list li{
+    float: left;
+}
+.pin-nav-wrap .nav-list li.site{
+    width: 95px;
+    margin-right: 28px;
+}
+.pin-nav-wrap .nav-list li a{
+    font: 14px/42px PingFangSC-Regular,HelveticaNeue-Light,'Helvetica Neue Light','Microsoft YaHei',sans-serif;
+    position: relative;
+    color: #ccc;
+    display: block;
+    overflow: hidden;
+    height: 42px;
+    padding: 0 15px;
+}
+.pin-nav-wrap .nav-list li.site a.pin-logo{
+    display: block;
+    width: 95px;
+    height: 42px;
+    background: url("../images/pin_logo.png") no-repeat 10px 48%;
+}
+.pin-nav-wrap .nav-list li a span{
+    position: absolute;
+    top: 19px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    transition: all .2s;
+    border-top: 4px solid #ccc;
+    border-right: 4px solid transparent;
+    border-bottom: 0 none;
+    border-left: 4px solid transparent;
+}
+.pin-nav-wrap .nav-list li.more a{
+    width: 46px;
+}
+.pin-nav-wrap .nav-list li.more a span{
+    right: 15px;
+}
+.pin-nav-wrap .nav-list li .dropdown{
+    position: relative;
+    display: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,.2);
+}
+.pin-nav-wrap .nav-list li .dropdown a{
+    width: 56px;
+    padding: 0 10px;
+}
+/*.pin-nav-wrap .nav-list li .dropdown a:hover{*/
+/*    background-color: #000;*/
+/*    color: #fff;*/
+/*}*/
+.pin-nav-wrap .min-user li:first-child{
+    display: block;
+}
+.pin-nav-wrap .min-user li{
+    position: relative;
+    z-index: 11;
+}
+label{
+    cursor: pointer;
+}
+.pin-nav-wrap .min-user li label#pin-search{
+    line-height: 42px;
+    display: block;
+    height: 42px;
+    margin-right: 10px;
+}
+.pin-nav-wrap .min-user .search-img{
+    display: inline-block;
+    vertical-align: middle;
+}
+input{
+    font-family: PingFangSC-Regular,HelveticaNeue-Light,'Helvetica Neue Light','Microsoft YaHei',sans-serif;
+    border: none;
+    outline: 0;
+}
+.pin-nav-wrap .min-user li .pin-input{
+    font-family: PingFangSC-Regular,HelveticaNeue-Light,'Helvetica Neue Light','Microsoft YaHei',sans-serif;
+    font-size: 14px;
+    position: absolute;
+    z-index: 1;
+    top: 8px;
+    right: 42px;
+    width: 150px;
+    height: 26px;
+    transition: color .3s,border .3s;
+    opacity: 1;
+    color: rgba(255,255,255,.7);
+    border-bottom: 1px solid #aaa;
+    background: #3e3d43;
+}
+.submit-input{
+    position: absolute;
+    clip: rect(0 0 0 0);
+}
+.pin-nav-wrap .min-user li.line{
+    display: block;
+    height: 24px;
+    margin: 10px 0 0;
+    border-right: 1px solid #515056;
+}
+.pin-nav-wrap .min-user li.sign-out{
+    position: relative;
+    padding: 0 6px 0 15px;
+}
+.pin-nav-wrap .min-user li.sign-out a{
+    display: inline;
+    margin-right: 8px;
+    padding: 0;
+    color: #ccc;
+}
+.pin-nav-wrap .min-user li.sign-out a:hover{
+    background-color: #3e3d43;
+    color: #fff;
+    border-top: none;
+}
+.pin-nav-wrap .min-user li a{
+    position: relative;
+    z-index: 10;
+    margin-right: 0;
+    color: #fff;
+    background: 0 0;
+}
+.pin-nav-wrap .min-user li a:hover{
+    border-top: none;
+}
+.pin-nav-wrap .min-user li.book-shelf i{
+    margin-left: 5px;
+}
+.search-container{
+    height: 40px;
+    padding: 30px 0;
+}
+.search-wrap{
+    width: 500px;
+    margin: 0 auto;
+}
+.search-wrap input{
+    font: 14px/38px PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+    line-height: 38px;
+    float: left;
+    width: 375px;
+    height: 38px;
+    padding: 0 12px;
+    border: 1px solid #dbdbdb;
+    border-right: none;
+}
+.search-wrap .search-btn{
+    font: 18px/40px FZZCYSK;
+    float: left;
+    width: 80px;
+    height: 40px;
+    text-align: center;
+    text-indent: 5px;
+    letter-spacing: 4px;
+    color: #fff;
+    background: #bf2c24;
+}
+a.search-btn:hover{
+    color: #fff;
+    background-color: #f00;
+}
+.result-wrap{
+    padding: 0 0 30px;
+}
+.main-content-wrap{
+    width: 954px;
+}
+.tool-bar{
+    position: relative;
+    z-index: 1;
+    height: 40px;
+    margin-bottom: 24px;
+    padding: 0 12px;
+    background: #f7f6f2;
+}
+.tool-bar .count-info{
+    font: 12px/40px PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif, Simsun;
+    color: #a6a6a6;
+}
+.tool-bar .count-info span{
+    font: 12px/16px Arial;
+    margin: 0 5px;
+    color: #262626;
+}
+.tool-bar .select-info{
+    position: relative;
+}
+.tool-bar .select-info a{
+    font: 12px/40px PingFangSC-Regular, '-apple-system', Simsun;
+    position: relative;
+    display: inline-block;
+    height: 40px;
+    vertical-align: middle;
+    color: #a6a6a6;
+}
+.tool-bar .select-info>a{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.tool-bar .select-info a:hover{
+    color: #f00;
+}
+.tool-bar .select-info>a:first-child{
+    margin-left: 0;
+}
+.tool-bar .select-info a.act{
+    font-weight: 700;
+    color: #ed4259;
+}
+.book-img-text li{
+    height: 162px;
+    padding-top: 25px;
+    border-top: 1px solid #e6e6e6;
+}
+.book-img-text li:first-child{
+    padding-top: 0;
+    border-top: none;
+}
+.book-img-text .book-img-box{
+    position: relative;
+    z-index: 3;
+    width: 102px;
+    height: 136px;
+    margin-right: 16px;
+}
+.book-img-text .book-img-box, .book-img-text .book-mid-info{
+    float: left;
+}
+.book-img-text .book-img-box a{
+    display: block;
+    overflow: hidden;
+    width: 102px;
+    height: 136px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.35);
+}
+.book-img-text .book-img-box a img{
+    width: 102px;
+    height: 136px;
+}
+.book-img-text .book-mid-info{
+    width: 542px;
+    margin-top: 5px;
+}
+.book-img-text .book-mid-info h4{
+    font: 18px/24px PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+    overflow: hidden;
+    height: 24px;
+    margin-bottom: 8px;
+}
+.book-img-text .book-mid-info h4 cite{
+    color: #bf2c24;
+}
+.book-img-text .book-mid-info p{
+    font-family: PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif, Simsun;
+    font-size: 12px;
+}
+.book-img-text .book-mid-info p.author{
+    overflow: hidden;
+    height: 16px;
+    margin-bottom: 6px;
+}
+.book-img-text .book-mid-info p.author a{
+    line-height: 16px;
+    color: #a6a6a6;
+}
+.book-img-text .book-mid-info p.author em{
+    font-family: Arial;
+    margin: 1px 8px 0;
+    color: #e6e6e6;
+}
+.book-img-text .book-mid-info p.author span{
+    line-height: 16px;
+    color: #a6a6a6;
+}
+.book-img-text .book-mid-info p.intro{
+    font-size: 14px;
+    line-height: 24px;
+    overflow: hidden;
+    height: 48px;
+    margin-bottom: 8px;
+    color: #666;
+}
+.book-img-text .book-mid-info p.update{
+    line-height: 22px;
+}
+.book-img-text .book-mid-info p.update a{
+    display: inline-block;
+    vertical-align: middle;
+    color: #02b389;
+}
+.book-img-text .book-mid-info p.update em, .book-img-text .book-mid-info p.update span{
+    display: inline-block;
+    vertical-align: middle;
+    color: #b5b5b5;
+}
+.book-img-text .book-right-info{
+    position: relative;
+    width: 224px;
+    height: 136px;
+    margin-top: 5px;
+}
+.book-img-text .book-right-info{
+    float: right;
+}
+.book-img-text .book-right-info .total{
+    text-align: right;
+}
+.book-img-text .book-right-info .total p{
+    font: 12px/16px PingFangSC-Regular, '-apple-system', Simsun;
+    margin-bottom: 6ox;
+    color: #666;
+}
+.book-img-text .book-right-info .total p span{
+    font: 12px/16px PingFangSC-Regular, '-apple-system', Simsun;
+    margin-right: 3px;
+    color: #262626;
+}
+.book-img-text .book-right-info .btn{
+    font-size: 0;
+    position: absolute;
+    bottom: 4px;
+    left: 0;
+}
+.book-img-text .book-right-info .btn a{
+    font: 14px/32px PingFangSC-Regular, '-apple-system', Simsun;
+    display: inline-block;
+    width: 98px;
+    height: 32px;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid;
+}
+.book-img-text .book-right-info .btn a.red-btn{
+    margin-right: 24px;
+    color: #fff;
+    border-color: #bf2c24;
+    background: #bf2c24;
+}
+.book-img-text .book-right-info .btn a.green-btn{
+    color: #02b389;
+    border-color: #39dc2e;
+}

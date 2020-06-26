@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>账号注册丨一点阅读</title>
+    <link rel="stylesheet" th:href="@{/CSS/reg.css}" type="text/css">
+</head>
+<body>
+    <div class="wrap">
+        <div class="header reg-header">
+            <div class="box-center">
+                <div class="logo cf">
+                    <a href="">
+                    </a>
+                    <em></em>
+                    <span class="lang">用户注册</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="box-center boodier">
+            <div class="reg-wrap">
+                <div class="content">
+                    <h1 class="reg-step cf">
+                        <span>填写注册信息</span>
+                    </h1>
+                    <div class="reg-note">
+                        <h3>您正在注册一点账号</h3>
+                    </div>
+                    <div class="error" th:text="${error}">
+
+                    </div>
+                    <form th:action="@{/regist}">
+                        <form class="former cf" action="">
+                            <div class="form-item cf">
+                                <label for="">用户名：</label>
+                                <input type="text" class="txt" placeholder="请输入用户名" name="username">
+                            </div>
+                            <div class="form-item cf">
+                                <label for="">请输入账号：</label>
+                                <input type="text"  class="txt" placeholder="请输入账号" name="uid">
+                            </div>
+                            <div class="form-item cf">
+                                <label for="">请输入密码：</label>
+                                <input type="password" class="txt" placeholder="请输入密码" name="password">
+                            </div>
+                            <div class="form-item cf">
+                                <input type="submit" value="立即注册" class="submit">
+                            </div>
+                        </form>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

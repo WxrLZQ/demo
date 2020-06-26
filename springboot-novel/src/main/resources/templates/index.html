@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>一点阅读</title>
+    <link rel="stylesheet" th:href="@{/CSS/index.css}" type="text/css">
+    <script th:src="@{/JS/jquery-3.4.1.js}"></script>
+    <script th:src="@{/JS/jquery-3.4.1.min.js}"></script>
+    <script th:src="@{/JS/carousel.js}"></script>
+</head>
+<body>
+<div class="wrap">
+
+    <div class="head box-center">
+
+        <div class="box-center cf">
+            <div class="book-shelf fr">
+                <a href="login.html" target="_blank">
+                    <i>我的书架</i>
+                </a>
+            </div>
+            <div class="login-box fr"  th:if="${session.name}==null">
+                <div class="sign-out">
+                    <a id="login-btn" class="black" th:href="@{/tologin}" target="_blank">登录</a>
+                    <em>|</em>
+                    <a id="reg-btn" th:href="@{/toregist}" target="_blank">注册</a>
+                </div>
+            </div>
+            <div  class="login-box fr" th:if=" ${session.name}!=null" >
+                <div class="sign-out" th:text="${session.name.username}"></div>
+                <a th:href="@{/cancel}">注销</a>
+            </div>
+            <div class="logo fl">
+                <a href="//www.yidian.com"></a>
+            </div>
+            <form th:action="@{/search}">
+                <div class="search-wrap fl">
+                    <input class="search-box" type="text" placeholder="我修的可能是假仙" autocomplete="off" name="novel">
+                    <input class="search-btn" type="submit">
+                </div>
+            </form>
+
+        </div>
+
+        <div class="clear"></div>
+
+    </div>
+
+    <div class="main-nav-wrap">
+        <div class="main-nav box-center cf">
+            <ul>
+                <li class="first">
+                        <span>
+                            <em>
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                            </em>
+                            作品分类
+                        </span>
+                </li>
+                <li class="nav-li">
+                    <a href="">全部作品</a>
+                </li>
+                <li class="nav-li">
+                    <a href="">排行</a>
+                </li>
+                <li class="nav-li">
+                    <a href="">完本</a>
+                </li>
+                <li class="nav-li">
+                    <a href="">免费</a>
+                </li>
+                <li class="nav-li">
+                    <a href="">作家专区</a>
+                </li>
+                <li class="nav-li">
+                    <a href="">客户端</a>
+                </li>
+                <li class="game phone" id="game-phone">
+                    <b class="phone-game" href="">手游</b>
+                </li>
+                <li class="game web" id="game-web">
+                    <b class="web-game" href="">页游</b>
+                </li>
+            </ul>
+        </div>
+
+        <div class="clear"></div>
+    </div>
+
+    <div class="focus-wrap box-center mb40">
+        <div class="classify-list fl" id="classify-list">
+            <dl class="cf">
+                <dd class="left">
+                    <a href="" target="_blank">
+                        <cite>
+                            <em class="icon-1 icon-1-ft"></em>
+                            <span class="info">
+                                    <i>玄幻</i>
+                                    <b>721722</b>
+                                </span>
+                        </cite>
+                    </a>
+                </dd>
+                <dd>
+                    <a href="" target="_blank">
+                        <cite>
+                            <em class="icon-2 icon-2-ft"></em>
+                            <span class="info">
+                                    <i>奇幻</i>
+                                    <b>159241</b>
+                                </span>
+                        </cite>
+                    </a>
+                </dd>
+                <dd class="even left">
+                    <a href="" target="_blank">
+                        <cite>
+                            <em class="icon-3 icon-3-ft"></em>
+                            <span class="info">
+                                    <i>武侠</i>
+                                    <b>45378</b>
+                                </span>
+                        </cite>
+                    </a>
+                </dd>
+                <dd class="even">
+                    <a href="" target="_blank">
+                        <cite>
+                            <em class="icon-4 icon-4-ft"></em>
+                            <span class="info">
+                                    <i>仙侠</i>
+                                    <b>236460</b>
+                                </span>
+                        </cite>
+                    </a>
+                </dd>
+                <dd class="left">
+                    <a href="" target="_blank">
+                        <cite>
+                            <em class="icon-5 icon-5-ft"></em>
+                            <span class="info">
+                                    <i>都市</i>
+                                    <b>374226</b>
+                                </span>
+                        </cite>
+                    </a>
+                </dd>
+                <dd>
+                    <a href="" target="_blank">
+                        <cite>
+                            <em class="icon-6 icon-6-ft"></em>
+                            <span class="info">
+                                    <i>现实</i>
+                                    <b>43569</b>
+                                </span>
+                        </cite>
+                    </a>
+                </dd>
+                <dd class="even left">
+                    <a href="" target="_blank">
+                        <cite>
+                            <em class="icon-7 icon-7-ft"></em>
+                            <span class="info">
+                                    <i>军事</i>
+                                    <b>20678</b>
+                                </span>
+                        </cite>
+                    </a>
+                </dd>
+                <dd class="even">
+                    <a href="" target="_blank">
+                        <cite>
+                            <em class="icon-8 icon-8-ft"></em>
+                            <span class="info">
+                                    <i>历史</i>
+                                    <b>77223</b>
+                                </span>
+                        </cite>
+                    </a>
+                </dd>
+                <dd class="left">
+                    <a href="" target="_blank">
+                        <cite>
+                            <em class="icon-9 icon-9-ft"></em>
+                            <span class="info">
+                                    <i>游戏</i>
+                                    <b>108235</b>
+                                </span>
+                        </cite>
+                    </a>
+                </dd>
+                <dd>
+                    <a href="" target="_blank">
+                        <cite>
+                            <em class="icon-10 icon-10-ft"></em>
+                            <span class="info">
+                                    <i>体育</i>
+                                    <b>9101</b>
+                                </span>
+                        </cite>
+                    </a>
+                </dd>
+                <dd class="even left">
+                    <a href="" target="_blank">
+                        <cite>
+                            <em class="icon-11 icon-11-ft"></em>
+                            <span class="info">
+                                    <i>科幻</i>
+                                    <b>157222</b>
+                                </span>
+                        </cite>
+                    </a>
+                </dd>
+                <dd class="even">
+                    <a href="" target="_blank">
+                        <cite>
+                            <em class="icon-12 icon-12-ft"></em>
+                            <span class="info">
+                                    <i>悬疑</i>
+                                    <b>66999</b>
+                                </span>
+                        </cite>
+                    </a>
+                </dd>
+                <dd class="left">
+                    <a href="" target="_blank">
+                        <cite>
+                            <em class="icon-13 icon-13-ft"></em>
+                            <span class="info">
+                                    <i>女生网</i>
+                                    <b>800308</b>
+                                </span>
+                        </cite>
+                    </a>
+                </dd>
+                <dd>
+                    <a href="" target="_blank">
+                        <cite>
+                            <em class="icon-14 icon-14-ft"></em>
+                            <span class="info">
+                                    <i>轻小说</i>
+                                    <b>113480</b>
+                                </span>
+                        </cite>
+                    </a>
+                </dd>
+            </dl>
+        </div>
+
+        <div class="focus-box fl">
+            <div class="focus-slider">
+                <div class="lbf-sliders">
+                    <a class="more" href="" target="_blank">
+                        <i>
+                            <em></em>
+                            <em></em>
+                            <em></em>
+                        </i>
+                    </a>
+                    <ul>
+                        <li id="item1">
+                            <a href="">
+                                <img src="images/img-1.jpeg" alt="" width="100%">
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="thumb lbf-button-group" id="thumb">
+                        <a class="lbf-button active" href="">
+                            <span></span>
+                            守正创新
+                        </a>
+                        <a class="lbf-button" href="">
+                            超时空评测
+                        </a>
+                        <a class="lbf-button" href="">
+                            骑砍风云录
+                        </a>
+                        <a class="lbf-button" href="">
+                            我为天帝召唤群雄
+                        </a>
+                        <a class="lbf-button game-link" href="" target="_blank">
+                            神道之绝世仙
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="focus-img cf">
+                <ul>
+                    <li>
+                        <span class="op-tag"></span>
+                        <a href="">
+                            <img src="images/img-6.png" alt="">
+                        </a>
+                    </li>
+                    <li class="middle">
+                        <span class="op-tag"></span>
+                        <a href="">
+                            <img src="images/img-7.png" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <span class="op-tag"></span>
+                        <a href="">
+                            <img src="images/img-8.png" alt="">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="notice-wrap fr">
+            <div class="notice" id="notice">
+                <a class="more" id="more-notice" href="">
+                    <em class="dib-wrap point">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </em>
+                    <i></i>
+                </a>
+                <h3>
+                    <a href="">同舟共济，文学力量</a>
+                </h3>
+                <div class="notice-list">
+                    <ul>
+                        <li class="color-type-0">
+                            <a href="">
+                                <i>「</i>资讯<i>」</i>“一帝四皇”征文大赛
+                            </a>
+                        </li>
+                        <li class="color-type-0">
+                            <a href="">
+                                <i>「</i>资讯<i>」</i>百名网络作家接力发声
+                            </a>
+                        </li>
+                        <li class="color-type-0">
+                            <a href="">
+                                <i>「</i>资讯<i>」</i>致敬守护我们的职业
+                            </a>
+                        </li>
+                        <li class="color-type-0">
+                            <a href="">
+                                <i>「</i>资讯<i>」</i>我们的力量征文大赛
+                            </a>
+                        </li>
+                        <li class="color-type-0">
+                            <a class="red" href="">
+                                <em>页游</em>屠神灭魔传说
+                            </a>
+                        </li>
+                        <li class="color-type-0">
+                            <a class="red" href="">
+                                <em>页游</em>神道之绝世仙王
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="attention">
+                    <em class="iconfont"></em>
+                    <marquee behavior="scroll" direction="left" scrollamount="4" loop="0" onmouseover="this.stop()" onmouseout="this.start()">
+                        <span>
+                            一只柠檬精打赏 <a href="">青空洗雨</a>100W点
+                        </span>
+                    </marquee>
+                </div>
+            </div>
+
+            <div class="notice-banner" id="tr-banner">
+                <div class="op-tag"></div>
+                <a href=""><img src="images/img-9.jpg" alt=""></a>
+            </div>
+
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <div class="index-two-wrap box-center mb40 cf">
+        <div class="hot-work-box fl">
+            <div class="wrap-title cf swiper-title">
+                <div class="title fl">热门作品</div>
+                <div class="more fr">
+                    <a class="more-link" href="">更多</a>
+                </div>
+            </div>
+            <div class="hot-work-info">
+                <div class="hot-work-slide">
+                    <div class="three-slide-wrap">
+                        <ul id="left-slide" class="roundabout roundabout-holder" style="display: block; padding: 0px; position: relative">
+                            <li class="book-1 rboundabout-moveable-item rboundabout-in-focus">
+                                <img class="lazy" src="images/90.jpg" alt="" style="display: inline;">
+                            </li>
+                            <li class="book-1 rboundabout-moveable-item rboundabout-in-focus">
+                                <img class="lazy" src="images/91.jpg" alt="" style="display: inline;">
+                            </li>
+                            <li class="book-1 rboundabout-moveable-item rboundabout-in-focus">
+                                <img class="lazy" src="images/92.jpg" alt="" style="display: inline;">
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="info-text">
+                        <dl>
+                            <dd class="hidden" style="display: block">
+                                <h3>
+                                    <a href="">我真的不想当医生了</a>
+                                </h3>
+                                <p class="author">
+                                    <a href="">笔尖的手术刀</a>
+                                    <em></em>
+                                </p>
+                                <p class="total">
+                                    <b>795,731</b>
+                                    <span>人气</span>
+                                </p>
+                                <p class="intro">急诊科医生景萧然连续工作48小时，然后猝死了……重生的他回到少年时代。</p>
+                                <a class="read-btn" href="">书籍详情</a>
+                            </dd>
+                            <dd class="hidden" style="display: none">
+                                <h3>
+                                    <a href="">诸天谍影</a>
+                                </h3>
+                                <p class="author">
+                                    <a href="">兴霸天</a>
+                                    <em></em>
+                                </p>
+                                <p class="total">
+                                    <b>8,795,731</b>
+                                    <span>人气</span>
+                                </p>
+                                <p class="intro">三年之后又三年，我快成轮回者老大了喂！</p>
+                                <a class="read-btn" href="">书籍详情</a>
+                            </dd>
+                            <dd class="hidden" style="display: none">
+                                <h3>
+                                    <a href="">沧元图</a>
+                                </h3>
+                                <p class="author">
+                                    <a href="">我吃西红柿</a>
+                                    <em></em>
+                                </p>
+                                <p class="total">
+                                    <b>53,795,731</b>
+                                    <span>人气</span>
+                                </p>
+                                <p class="intro">我叫孟川，今年十五岁，是东宁府“镜湖道院”的大师兄。</p>
+                                <a class="read-btn" href="">书籍详情</a>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="center-book-list fl">
+            <div class="list-book">
+                <div class="center-title cf">
+                    <div class="title fl">品书试读</div>
+                </div>
+                <div class="center-showbook cf"    >
+                    <div class="center-book" th:each="novel:${novels}">
+                        <div class="book-img img-box fl">
+                            <a th:href="@{/info/}+${novel.nid}"><img th:src="${novel.img}" alt=""></a>
+                        </div>
+                        <div class="book-info fr">
+                            <div class="book-name" title="非洲酋长">
+                                <a href="">[[${novel.novel}]]</a>
+                            </div>
+                            <p class="info">[[${novel.synopsis}]]</p>
+                            <div class="author" title="更俗">
+                                <a href="">[[${novel.writer}]]</a>
+                            </div>
+                            <a class="cate" href="" title="都市">[[${novel.cname}]]</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="new-book-list fr">
+            <div class="new-book">
+                <div class="new-book-title cf">
+                    <div class="title fl">新书榜</div>
+                    <div class="more fr">
+                        <a class="more-link" href="">更多</a>
+                    </div>
+                </div>
+                <div class="h10-blank"></div>
+                <div class="lists">
+                    <ul>
+                        <li th:each="sort,sortStat:${sort5}">
+                            <span>5057602</span>
+                            <em class="list-icon" th:classappend="${sort.css}" >[[${sortStat.count}]]</em>
+                            <a th:href="@{/info/}+${sort.nid}">[[${sort.novel}]]</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+    </div>
+
+    <div class="banner-wrap box-center mb40" id="banner-one">
+        <a href="" style="display: inline">
+            <img src="images/banner-1.jpg" alt="">
+            <span class="op-tag"></span>
+        </a>
+        <a href=""></a>
+    </div>
+
+    <div class="rank-wrap box-center mb40 cf">
+        <div class="rank-list">
+            <div class="tab-lists">
+                <div class="wrap-title cf">
+                    <div class="title fl">24小时热销榜</div>
+                    <div class="more fr">
+                        <a class="more-link" href="">更多</a>
+                    </div>
+                </div>
+                <div class="h10-blank"></div>
+                <div class="line"></div>
+                <div class="lists" th:each="sort,sortStat:${sort1}">
+                    <div class="list-box">
+                        <div class="list-a" style="display: block">
+                            <em  class="top1 list-icon" th:text="${sortStat.count}" ></em>
+                            <a class="title" href="">[[${sort.novel}]]</a>
+                            <a class="author" href="">[[${sort.writer}]]</a>
+                            <a class="cate" href="">[[${sort.cname}]]</a>
+                            <span class="count">52.6万 字</span>
+                            <div class="list-img img-box">
+                                <a th:href="@{/info/}+${sort.nid}"><img th:src="${sort.img}" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="rank-list">
+            <div class="tab-lists">
+                <div class="wrap-title cf">
+                    <div class="title fl">月票榜 · 新书</div>
+                    <div class="more fr">
+                        <a class="more-link" href="">更多</a>
+                    </div>
+                </div>
+                <div class="h10-blank"></div>
+                <div class="line"></div>
+                <div class="lists" th:each="sort,sortStat:${sort2}">
+                    <div class="list-box" >
+                        <div class="list-a" style="display: block">
+                            <em class="top1 list-icon">[[${sortStat.count}]]</em>
+                            <a class="title" href="">[[${sort.novel}]]</a>
+                            <a class="author" href="">[[${sort.writer}]]</a>
+                            <a class="cate" href="">[[${sort.cname}]]</a>
+                            <span class="count">11072 月票</span>
+                            <div class="list-img img-box">
+                                <a th:href="@{/info/}+${sort.nid}"><img th:src="${sort.img}" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="rank-list">
+            <div class="tab-lists">
+                <div class="wrap-title cf">
+                    <div class="title fl">收藏榜</div>
+                    <div class="more fr">
+                        <a class="more-link" href="">更多</a>
+                    </div>
+                </div>
+                <div class="h10-blank"></div>
+                <div class="line"></div>
+                <div class="lists" th:each="sort,sortStat:${sort3}">
+                    <div class="list-box">
+                        <div class="list-a" style="display: block">
+                            <em class="top1 list-icon">[[${sortStat.count}]]</em>
+                            <a class="title" href="">[[${sort.novel}]]</a>
+                            <a class="author" href="">[[${sort.writer}]]</a>
+                            <a class="cate" href="">[[${sort.cname}]]</a>
+                            <span class="count">5950565 收藏数</span>
+                            <div class="list-img img-box">
+                                <a th:href="@{/info/}+${sort.nid}"><img th:src="${sort.img}" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="rank-list">
+            <div class="tab-lists">
+                <div class="wrap-title cf">
+                    <div class="title fl">周推荐榜</div>
+                    <div class="more fr">
+                        <a class="more-link" href="">更多</a>
+                    </div>
+                </div>
+                <div class="h10-blank"></div>
+                <div class="line"></div>
+                <div class="lists" th:each="sort,sortStat:${sort4}">
+                    <div class="list-box">
+                        <div class="list-a" style="display: block">
+                            <em class="top1 list-icon">[[${sortStat.count}]]</em>
+                            <a class="title" href="">[[${sort.novel}]]</a>
+                            <a class="author" href="">[[${sort.writer}]]</a>
+                            <a class="cate" href="">[[${sort.cname}]]</a>
+                            <span class="count">287262 推荐票</span>
+                            <div class="list-img img-box">
+                                <a th:href="@{/info/}+${sort.nid}"><img th:src="${sort.img}" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+
+    </div>
+
+    <div class="banner-wrap box-center mb40" id="banner-two">
+        <a href="" style="display: inline">
+            <img src="images/banner-2.png" alt="">
+        </a>
+    </div>
+
+    <div class="update-wrap box-center mb40 cf">
+        <div class="update-rec-wrap fl">
+            <h3 class="wrap-title">
+                最近更新
+                <span>24小时内更新13963本</span>
+            </h3>
+            <div class="update-rec-list">
+                <ul>
+                    <li>
+                        <div class="book-wrap cf">
+                            <div class="book-info fr">
+                                <h4 class="">
+                                    <a href="">随身带个狩猎空间</a>
+                                </h4>
+                                <p class="digital">
+                                    <span>日更千字</span>
+                                </p>
+                                <p class="author">
+                                    <a class="writer" href="">青空洗雨</a>
+                                </p>
+                            </div>
+                            <div class="book-cover">
+                                <a class="link" href="">
+                                    <img src="images/book-cover-1.jpg" alt="">
+                                </a>
+                                <span></span>
+                            </div>
+                        </div>
+                        <p class="intro">在空间中击杀猎物之后获得的小光团竟然能用来修炼？这不是要让我成为万年打野么？</p>
+                    </li>
+                    <li>
+                        <div class="book-wrap cf">
+                            <div class="book-info fr">
+                                <h4 class="">
+                                    <a href="">垂钓之神</a>
+                                </h4>
+                                <p class="digital">
+                                    <span>日更千字</span>
+                                </p>
+                                <p class="author">
+                                    <a class="writer" href="">会狼叫的猪</a>
+                                </p>
+                            </div>
+                            <div class="book-cover">
+                                <a class="link" href="">
+                                    <img src="images/book-cover-2.jpg" alt="">
+                                </a>
+                                <span></span>
+                            </div>
+                        </div>
+                        <p class="intro">这里流传着一句古话，如果你不是在垂钓，就是在去垂钓的路上。</p>
+                    </li>
+                    <li>
+                        <div class="book-wrap cf">
+                            <div class="book-info fr">
+                                <h4 class="">
+                                    <a href="">元尊</a>
+                                </h4>
+                                <p class="digital">
+                                    <span>日更千字</span>
+                                </p>
+                                <p class="author">
+                                    <a class="writer" href="">天蚕土豆</a>
+                                </p>
+                            </div>
+                            <div class="book-cover">
+                                <a class="link" href="">
+                                    <img src="images/book-cover-3.jpg" alt="">
+                                </a>
+                                <span></span>
+                            </div>
+                        </div>
+                        <p class="intro">吾有一口玄黄气，可吞天地日月星。</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="update-list-wrap fl">
+            <div class="update-tab cf">
+                <a class="more-link" href="">更多</a>
+                <span>|</span>
+                <p>
+                    <a href="">全部</a>
+                </p>
+            </div>
+            <div class="update-list" id="update-list">
+                <div class="update-table">
+                    <table width="100%">
+                        <tbody th:each="book:${book}">
+                            <tr>
+                                <td>
+                                    <a class="classify" href="">
+                                        <em>「</em>[[${book.cname}]]<em>」</em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a class="name" th:href="@{/info}+${book.nid}">[[${book.novel}]]</a>
+                                </td>
+                                <td>
+                                    <a class="section" href="">[[${book.chapter}]]</a>
+                                </td>
+                                <td class="respon">
+                                    <a class="author" href="">[[${book.writer}]]</a>
+                                </td>
+                                <td class="respon">
+                                    <i>03-12 22:29</i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="god-wrap fr">
+            <h3 class="wrap-title">
+                大神俱乐部
+                <a class="more-link" href="">更多</a>
+            </h3>
+            <div class="god-list">
+                <ul>
+                    <li>
+                        <div class="god-info">
+                            <div class="photo">
+                                <a href="">
+                                    <img src="images/author-1.jpg" alt="" style="display: inline">
+                                </a>
+                            </div>
+                            <h3>
+                                <a href="">天蚕土豆</a>
+                            </h3>
+                            <p class="type">白金作家</p>
+                            <h4>代表作</h4>
+                            <p class="works cf">
+                                <a href="">斗破苍穹</a>
+                                <span>|</span>
+                                <a href="">武动乾坤</a>
+                                <span>|</span>
+                                <a href="">大主宰</a>
+                            </p>
+                            <p class="intro">白金作家，网络文学资深玄幻小说作家。</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="god-info">
+                            <div class="photo">
+                                <a href="">
+                                    <img src="images/author-2.png" alt="" style="display: inline">
+                                </a>
+                            </div>
+                            <h3>
+                                <a href="">唐家三少</a>
+                            </h3>
+                            <p class="type">白金作家</p>
+                            <h4>代表作</h4>
+                            <p class="works cf">
+                                <a href="">斗罗大陆</a>
+                                <span>|</span>
+                                <a href="">斗罗大陆Ⅱ绝世唐门</a>
+                                <span>|</span>
+                                <a href="">斗罗大陆Ⅲ龙王传说</a>
+                            </p>
+                            <p class="intro">白金作家，中国作协主席团委员，北京青联委员，网络文学代表人物之一，蝉联多年作家富豪榜榜首。</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="god-info">
+                            <div class="photo">
+                                <a href="">
+                                    <img src="images/author-3.jpg" alt="" style="display: inline">
+                                </a>
+                            </div>
+                            <h3>
+                                <a href="">净无痕</a>
+                            </h3>
+                            <p class="type">白金作家</p>
+                            <h4>代表作</h4>
+                            <p class="works cf">
+                                <a href="">太古神王</a>
+                            </p>
+                            <p class="intro">白金作家，网络文学知名玄幻作家，名校高材生，作品深受读者喜爱。</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+    </div>
+
+    <div class="footer">
+        <div class="box-center cf">
+            <div class="footer-text">
+                <p>上海网警提示：网络刷单是违法 切莫轻信有返利，网上交友套路多 卖惨要钱需当心，电子红包莫轻点 个人信息勿填写，仿冒客服来行骗 官方核实最重要，招工诈骗有套路 预交费用需谨慎，低价充值莫轻信 莫因游戏陷套路，连接WIFI要规范 确认安全再连接，抢购车票有章法 确认订单再付款，白条赊购慎使用 提升额度莫轻信，网购预付有风险 正规渠道很重要。</p>
+            </div>
+            <div class="footer-menu dib-wrap">
+                <a href="">关于一点</a>
+                <a href="">联系我们</a>
+                <a href="">加入我们</a>
+                <a href="">帮助中心</a>
+                <a href="">提交建议</a>
+                <a href="">举报中心</a>
+            </div>
+            <div class="copy-right">
+                <p>
+                    <span>Copyright © 2020-2020 www.yidian.com All Rights Reserved</span> 版权所有 上海天灵娱乐信息科技有限公司
+                </p>
+                <p>
+                    <a href="">
+                        <img src="images/o5lajshfcw.png" alt="">
+                        <span>沪公安备 44010402000***号</span>
+                    </a>
+                    网站备案/许可证号：
+                    <a href="">沪B2-202000**-1</a>
+                     出版经营许可证：新出发沪批字第 U37** 号 网络文化经营许可证：沪网文[2020]0081-0** 新出网证（沪）字 010
+                </p>
+                <p>请所有作者发布作品时务必遵守国家互联网信息管理办法规定，我们拒绝任何色情小说，一经发现，即作删除！举报电话：010-*******</p>
+                <p>本站所收录的作品、社区话题、用户评论、用户上传内容或图片等均属用户个人行为。如前述内容侵害您的权益，欢迎举报投诉，一经核实，立即删除，本站不承担任何责任</p>
+                <p>联系方式 总机 020-******* 地址：中国（上海）***********************</p>
+            </div>
+            <div class="safety-box">
+                <div class="safety-img dib-wrap">
+                    <a class="site1" href=""></a>
+                    <a class="site2" href=""></a>
+                    <a class="site3" href=""></a>
+                    <a class="site4" href=""></a>
+                    <a class="site5" href=""></a>
+                    <a class="site6" href=""></a>
+                    <a class="site7" href=""></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+
+        var imgs=[
+            {"src":"images/img-1.jpeg"},
+            {"src":"images/img-2.jpg"},
+            {"src":"images/img-3.jpg"},
+            {"src":"images/img-4.jpg"},
+            {"src":"images/img-5.jpg"}
+        ];
+
+        //第一张图片对应的菜单选中
+        $($(".lbf-button")[0]).css("background-color","#ed4259");
+
+        //初始化所有的菜单项
+        var menus=$(".lbf-button");
+        for(var i=0;i<menus.length;i++){
+            menus[i].id=i;
+        }
+
+        //定时器
+        var timeId=setInterval("converImg(imgs)",1500);
+        var index=0;
+        //图片地址切换
+        function converImg(data) {
+
+            //获取图片的标签元素对象
+            var img=$(".lbf-sliders>ul>li>a>img");
+
+            //切换图片地址
+            img.attr({
+                 "src":data[index].src
+            });
+
+            var menus=$(".lbf-button");
+            $(menus[index]).css("background-color","#ed4259");
+
+            for(var i=0;i<data.length;i++){
+                if(i!=index){
+                    $(menus[i]).css("background-color","");
+                }
+             }
+
+            if(index>=data.length-1){
+                index=0;
+            }else{
+                index++;
+            }
+        }
+
+        //给菜单项绑定事件
+         var menuList=$(".lbf-button");
+
+        for(var i=0;i<menuList.length;i++){
+            //鼠标移入事件
+            $(menuList[i]).mouseover(function () {
+                //取消定时器
+                clearInterval(timeId);
+
+                // 图片的选中以及菜单项的选中
+                index=this.id;
+                converImg(imgs);
+            });
+
+            //鼠标移出事件
+            $(menuList[i]).mouseout(function () {
+                //重新启动定时器
+                timeId=setInterval("converImg(imgs)",1500);
+            });
+        }
+
+    </script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            $("div.three-slide-wrap").each(function (i, e) {
+                $(e).attr("ondragstart", "return false");
+            });
+
+            var $index = $("div.three-slide-wrap");
+
+
+            var carousel1 = new Carousel($index.children("ul#left-slide"), {
+                opacity: .9,
+                scale: [.9],
+                transition: "600ms",
+                isClickCard: true,
+                isAuto: true,
+                interval: 1500
+            });
+
+
+        })
+
+        var i = 0;
+        $(".hidden").eq(0).show().siblings().hide();
+        setInterval(function() {
+            i++;
+            if (i == 3) {
+                i = 0;
+            }
+            $(".hidden").eq(i).show().siblings().hide();
+
+        }, 1500);
+
+
+    </script>
+</div>
+</body>
+</html>

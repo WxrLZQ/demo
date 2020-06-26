@@ -1,0 +1,126 @@
+a, body, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input, li, ol, p, pre, td, textarea, th, ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.reg-header{
+    border-bottom: none;
+    margin-bottom: 32px;
+}
+.header{
+    height: 99px;
+    border-bottom: 1px solid #dfdfdf;
+}
+.box-center{
+    width: 1200px;
+    margin: 0 auto;
+}
+.cf{
+    zoom: 1;
+}
+.header .logo{
+    padding-top: 22px;
+}
+a{
+    outline: none;
+    text-decoration: none;
+    color: #262626;
+}
+.header .logo a{
+    float: left;
+    width: 218px;
+    height: 55px;
+    background: url("images/logo-1.png");
+}
+.cf:before, .cf:after{
+    display: table;
+    content: '';
+}
+.cf:after{
+    clear: both;
+}
+.fl{
+    float: left;
+}
+.login-area-wrap{
+    position: relative;
+    z-index: 1;
+    padding: 100px 0;
+    min-height: 430px;
+}
+.login-img{
+    position: relative;
+    z-index: 1;
+    width: 534px;
+    height: 400px;
+    padding-left: 110px;
+    margin-right: 78px;
+}
+.login-wrap{
+    position: relative;
+    z-index: 1;
+    width: 398px;
+    min-height: 400px;
+    background: #fff;
+    border: 1px solid #e6e6e6;
+}
+.login-tab{
+    position: relative;
+    z-index: 1;
+    width: 322px;
+    height: 45px;
+    text-align: center;
+    line-height: 45px;
+    margin: 0 auto;
+    border-bottom: 2px solid #e6e6e6;
+}
+.login-box{
+    margin-top: 40px;
+    text-align: center;
+}
+.login-box p{
+    position: relative;
+    margin-right: 10px;
+    line-height: 40px;
+    padding-bottom: 40px;
+}
+.icon-username, .icon-password{
+    position: relative;
+    left: 53px;
+    top: 12px;
+    width: 14px;
+    height: 18px;
+    background: url("images/icon-login.png") no-repeat;
+}
+.icon-username{
+    background-position: 0 -1px;
+}
+.box{
+    border: 1px solid #d9d9d9;
+}
+.login-text{
+    font-size: 14px;
+    color: #777;
+    line-height: 38px;
+    height: 38px;
+    padding: 0 10px 0 40px;
+    width: 272px;
+}
+.icon-password{
+    background-position: 0 -51px;
+}
+.btn-submit{
+    border: none;
+    margin: 0 auto;
+    font-size: 18px;
+    line-height: 50px;
+    display: block;
+    width: 322px;
+    cursor: pointer;
+}
+.btn-red{
+    background-color: #a5232e;
+    border-radius: 3px;
+    color: #fff;
+    text-align: center;
+}

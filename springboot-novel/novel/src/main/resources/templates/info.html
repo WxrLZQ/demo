@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>[[${detail.novel}]]-[[${detail.writer}]]著-[[${detail.cname}]]</title>
+    <link rel="stylesheet" th:href="@{/CSS/info.css}" type="text/css">
+    <script th:src="@{/JS/jquery-3.4.1.js}"></script>
+    <script th:src="@{/JS/jquery-3.4.1.min.js}"></script>
+    <script th:src="@{/JS/info.js}"></script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="pin-nav-wrap" id="pin-nav">
+            <div class="box-center cf">
+                <div class="nav-list site-nav fl">
+                    <ul>
+                        <li class="site">
+                            <a class="pin-logo" th:href="@{/index}">
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="">玄幻</a>
+                        </li>
+                        <li class="">
+                            <a href="">都市</a>
+                        </li>
+                        <li class="">
+                            <a href="">仙侠</a>
+                        </li>
+                        <li class="">
+                            <a href="">科幻</a>
+                        </li>
+                        <li class="">
+                            <a href="">游戏</a>
+                        </li>
+                        <li>
+                            <a href="">历史</a>
+                        </li>
+                        <li>
+                            <a href="">奇幻</a>
+                        </li>
+                        <li class="more" id="top-nav-more">
+                            <a href="">
+                                更多
+                                <span></span>
+                            </a>
+                            <div class="dropdown">
+                                <a href="">全部作品</a>
+                                <a href="">轻小说</a>
+                                <a href="">武侠</a>
+                                <a href="">军事</a>
+                                <a href="">悬疑</a>
+                                <a href="">体育</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="top-box"></div>
+
+        <div class="border-shadow">
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="book-detail-wrap center990">
+            <div class="book-information cf">
+                <div class="book-img">
+                    <a id="bookImg" href="">
+                        <img th:src="@{/}+${detail.img}" alt="">
+                    </a>
+                </div>
+                <div class="book-info">
+                    <h1>
+                        <em>[[${detail.novel}]]</em>
+                        <span>
+                            <a class="writer">[[${detail.writer}]]</a>
+                            著
+                        </span>
+                    </h1>
+                    <p class="tag">
+                        <span class="green">签约</span>
+                        <span class="green">连载</span>
+                        <span class="green">VIP</span>
+                        <a class="red" href="">[[${detail.cname}]]</a>
+                    </p>
+                    <p class="intro">[[${detail.motto}]]</p>
+                    <p>
+                        <em>
+                            <span>299.73</span>
+                        </em>
+                        <cite>万字</cite>
+                        <i>|</i>
+                        <em>
+                            <span>56.06</span>
+                        </em>
+                        <cite>总推荐</cite>
+                        <i>|</i>
+                        <em>
+                            <span>7639</span>
+                        </em>
+                        <cite>周推荐</cite>
+                    </p>
+                    <p>
+                        <a class="red-btn" >免费试读</a>
+                        <a class="green-btn" href="">加入书架</a>
+                    </p>
+                </div>
+                <div class="comment-wrap">
+                    <div>
+                        <h4>
+                            <span>
+                                <cite>8</cite>
+                                <em>.</em>
+                            </span>
+                            <i>5</i>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            <div class="content-nav-wrap cf">
+                <div class="nav-wrap fl">
+                    <ul>
+                        <li class="act">
+                            <a class="lang" href="">作品信息</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="book-content-wrap cf">
+                <div class="left-wrap fl">
+                    <div class="book-info">
+                        <div class="book-intro" th:utext="${detail.brief}"></div>
+                        <div class="book-state">
+                            <ul>
+                                <li>
+                                    <b>作者自定义标签</b>
+                                    <div class="detail">
+                                        <p class="tag-wrap">
+                                            <a class="tags" href="">热血</a>
+                                            <a class="tags" href="">学生</a>
+                                            <a class="tags" href="">练功流</a>
+                                            <a class="tags" href="">龙</a>
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-nav-wrap cf">
+                <div class="nav-wrap fl">
+                    <ul>
+                        <li class="act">
+                            <a class="lang" href="">
+                                目录
+                                <i>
+                                    <span>(5章)</span>
+                                </i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="catalog-content-wrap">
+                <div class="volume-wrap">
+                    <div class="volume">
+                        <h3 >
+                            <a class="subscri" href="">
+                                <em class="btn">分卷阅读</em>
+                            </a>
+                            正文卷
+                            <i>·</i>
+                            共5章
+                            <span class="free">免费</span>
+                            <em class="count">
+                                本卷共
+                                <cite>15000</cite>
+                                字
+                            </em>
+                        </h3>
+                        <ul class="cf" >
+                            <li th:each="chapter:${chapter}">
+                                <a th:href="@{/chapter/}+${chapter.cid}" target="_blank">[[${chapter.chapterNumber}]]</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
