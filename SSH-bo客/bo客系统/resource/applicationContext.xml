@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+            http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context.xsd
+            http://www.springframework.org/schema/aop
+            http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+     <!--导入hibernate相关配置-->
+     <import resource="hibernateApplication.xml"/>
+
+     <!--登录 login-->
+     <bean id="loginAction" class="com.gdaib.web.LoginAction" scope="prototype">
+          <property name="loginService" ref="loginService"/>
+     </bean>
+
+     <bean id="loginService" class="com.gdaib.service.Impl.LoginServiceImpl" >
+          <property name="userDao" ref="UserDao"/>
+     </bean>
+
+     <bean id="UserDao" class="com.gdaib.dao.Impl.UserDaoImpl">
+          <property name="sessionFactory" ref="sessionFactory"/>
+     </bean>
+
+     <!--分类 category-->
+     <bean id="categoryAction" class="com.gdaib.web.CategoryAction" scope="prototype">
+          <property name="categoryService" ref="categoryService"/>
+     </bean>
+
+     <bean id="categoryService" class="com.gdaib.service.Impl.CategoryServiceImpl">
+          <property name="categoryDao" ref="categoryDao"/>
+     </bean>
+
+     <bean id="categoryDao" class="com.gdaib.dao.Impl.CategoryDaoImpl" >
+          <property name="sessionFactory" ref="sessionFactory"/>
+     </bean>
+
+     <!--文章 article-->
+     <bean id="articleAction" class="com.gdaib.web.ArticleAction" scope="prototype">
+          <property name="articleService" ref="ArticleService"/>
+     </bean>
+     <bean id="ArticleService" class="com.gdaib.service.Impl.ArticleServiceImpl">
+          <property name="articleDao" ref="ArticleDao"/>
+     </bean>
+     <bean id="ArticleDao" class="com.gdaib.dao.Impl.ArticleDaoImpl">
+          <property name="sessionFactory" ref="sessionFactory"/>
+     </bean>
+
+     <bean id="LocationAction" class="com.gdaib.web.locationAction" scope="prototype"></bean>
+
+     <bean id="WebAction" class="com.gdaib.web.WebAction" scope="prototype">
+          <property name="articleService" ref="ArticleService"/>
+     </bean>
+</beans>
